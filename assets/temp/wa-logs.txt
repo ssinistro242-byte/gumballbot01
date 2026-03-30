@@ -1,0 +1,4 @@
+{"level":50,"time":"2026-03-29T18:51:29.391Z","pid":9315,"hostname":"localhost","fullErrorNode":{"tag":"stream:error","attrs":{"code":"515"}},"msg":"stream errored out"}
+{"level":50,"time":"2026-03-29T20:30:03.444Z","pid":12797,"hostname":"localhost","error":{"data":null,"isBoom":true,"isServer":false,"output":{"statusCode":428,"payload":{"statusCode":428,"error":"Precondition Required","message":"Connection Closed"},"headers":{}}},"msg":"transaction failed, rolling back"}
+{"level":50,"time":"2026-03-29T22:24:59.137Z","pid":12797,"hostname":"localhost","msg":"error in sending keep alive"}
+{"level":50,"time":"2026-03-29T22:44:18.605Z","pid":12797,"hostname":"localhost","msg":"error in sending keep alive"}

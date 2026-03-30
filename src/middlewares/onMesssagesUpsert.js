@@ -105,12 +105,25 @@ export async function onMessagesUpsert({ socket, messages, startProcess }) {
         continue;
       }
 
-      await customMiddleware({
-        socket,
-        webMessage,
-        type: "message",
-        commonFunctions,
-      });
+const { body, isCmd } = commonFunctions;
+const from = webMessage.key.remoteJid;
+
+if (!global.usersRespondidos) global.usersRespondidos = {};
+
+if (!isCmd && !global.usersRespondidos[from]) {
+  global.usersRespondidos[from] = true;
+
+  await socket.sendMessage(from, {
+    text: `😺 Olá, bem-vindo!
+
+🤖 Me chamo Gumball
+👑 Criado por _opauloofc
+
+📋 Digite /menu para ver os comandos!`
+  });
+
+  commonFunctions.body = "/menu";
+}
 
       await dynamicCommand(commonFunctions, startProcess);
     } catch (error) {
