@@ -109,10 +109,30 @@ export async function connect() {
 
       process.exit(1);
     }
+console.log("Aguardando 30 segundos para gerar o código...");
 
-    const code = await socket.requestPairingCode(onlyNumbers(phoneNumber));
+setTimeout(async () => {
 
-    console.log(`Código de pareamento: ${formatPairingCode(code)}`);
+  try {
+
+    const code = await socket.requestPairingCode(
+      onlyNumbers(phoneNumber)
+    );
+
+    console.log(
+      `Código de pareamento: ${formatPairingCode(code)}`
+    );
+
+    console.log("Você terá cerca de 1 minuto para digitar o código.");
+
+  } catch (err) {
+
+    console.log("Erro ao gerar código:", err);
+
+  }
+
+}, 30000);
+    
   }
 
   socket.ev.on("connection.update", async (update) => {
@@ -136,8 +156,12 @@ export async function connect() {
             badMacHandler.clearProblematicSessionFiles();
             badMacHandler.resetErrorCount();
 
-            const newSocket = await connect();
-            load(newSocket);
+            setTimeout(async () => {
+
+  const newSocket = await connect();
+  load(newSocket);
+
+}, 60000);
             return;
           }
         }
