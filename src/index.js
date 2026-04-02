@@ -145,8 +145,6 @@ async function startBot() {
 
 startBot();
 
-import http from "http";
-
 const PORT = process.env.PORT || 3000;
 
 http.createServer((req, res) => {
