@@ -233,3 +233,16 @@ O prefixo padrão definido no config.js é ${PREFIX}`,
 
   return socket;
 }
+
+startBot();
+
+import http from "http";
+
+const PORT = process.env.PORT || 3000;
+
+http.createServer((req, res) => {
+  res.write("Bot online");
+  res.end();
+}).listen(PORT, () => {
+  console.log("Servidor ativo na porta " + PORT);
+});
