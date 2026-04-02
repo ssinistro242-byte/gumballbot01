@@ -145,11 +145,12 @@ async function startBot() {
 
 startBot();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 http.createServer((req, res) => {
-  res.write("Bot online");
-  res.end();
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("OK");
 }).listen(PORT, () => {
-  console.log("Servidor ativo na porta " + PORT);
+  console.log("Ping server ativo na porta " + PORT);
 });
